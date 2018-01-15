@@ -4,6 +4,9 @@
     "description": "爱柯南，看漫画",
     "author": "shamoyuu <shamoyuu@qq.com>",
     "private": true,
+    "scripts": {
+        "debug-gulp": "iron-node node_modules/gulp/bin/gulp.js"
+    },
     "dependencies": {
         "vue": "^2.5.2",
         "vue-router": "^3.0.1"

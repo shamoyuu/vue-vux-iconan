@@ -4,6 +4,7 @@
 
 const path = require('path');
 
+
 module.exports = {
     dev: {
         
@@ -41,7 +42,7 @@ module.exports = {
         index: path.resolve(__dirname, '../dist/www/index.html'),
         
         // Paths
-        assetsRoot: path.resolve(__dirname, '../dist//www'),
+        assetsRoot: path.resolve(__dirname, '../dist/www'),
         assetsSubDirectory: '',
         assetsPublicPath: '',
         
@@ -65,5 +66,10 @@ module.exports = {
         // `npm run build --report`
         // Set to `true` or `false` to always turn it on or off
         bundleAnalyzerReport: process.env.npm_config_report
+    },
+    
+    buildWebapp: {
+        index: path.resolve(__dirname, '../dist/index.html'),
+        assetsRoot: path.resolve(__dirname, '../dist')
     }
 };

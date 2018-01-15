@@ -1,0 +1,32 @@
+{
+    "targets": {
+        "mobile": {
+            "env": {
+                "test": {
+                    "service": "http://meleong.duapp.com/psh/union"
+                },
+                "production": {
+                    "service": "http://meleong.duapp.com/psh/union"
+                }
+            },
+            "platforms": {
+                "android": {
+                    "cordovaVersion": "5.2.2"
+                },
+                "ios": {
+                    "cordovaVersion": "4.3.0"
+                }
+            }
+        },
+        "webapp": {
+            "env": {
+                "test": {
+                    "service": "http://meleong.duapp.com/psh/union"
+                },
+                "production": {
+                    "service": "http://meleong.duapp.com/psh/union"
+                }
+            }
+        }
+    }
+}
