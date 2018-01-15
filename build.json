@@ -1,0 +1,18 @@
+{
+    "android": {
+        "debug": {
+            "keystore": "./iconan.keystore",
+            "storePassword": "123456",
+            "alias": "iconan",
+            "password" : "123456",
+            "keystoreType": ""
+        },
+        "release": {
+            "keystore": "./iconan.keystore",
+            "storePassword": "123456",
+            "alias": "iconan",
+            "password" : "123456",
+            "keystoreType": ""
+        }
+    }
+}

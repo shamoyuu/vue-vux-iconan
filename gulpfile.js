@@ -1,10 +1,11 @@
-'use strict'
+'use strict';
 
 require('./build/check-versions')();
 
 const shelljs = require('shelljs');
 
 const gulp = require('gulp');
+const shell = require('gulp-shell');
 const clean = require('gulp-clean');
 
 process.env.NODE_ENV = 'production';
@@ -26,17 +27,33 @@ const runSequence = require('run-sequence');
 
 
 const tasks = {
+    //默认任务
+    'default': ['dev'],
+    //开发模式
+    'dev': shell.task([
+        'webpack-dev-server --inline --progress --config build/webpack.dev.conf.js'
+    ]),
     //清空dist文件夹
     'clean.dist': () => {
         gulp
-            .src('cordova/**/*')
-            .pipe(gulp.dest('dist'));
+            .src(assets)
+            .pipe(clean());
     },
     //复制cordova文件夹到dist文件夹
     'copy.cordova': () => {
         gulp
             .src('cordova/**/*')
             .pipe(gulp.dest('dist'));
+    },
+    'cordova.build.android': () => {
+        shelljs.cd('./dist');
+        shelljs.exec('cordova build android --buildConfig=../build.json');
+        shelljs.cd(__dirname);
+    },
+    'cordova.run.android': () => {
+        shelljs.cd('./dist');
+        shelljs.exec('cordova run android');
+        shelljs.cd(__dirname);
     },
     'webpack.build': (done) => {
         let spinner = ora('正在打包，请稍后...');
@@ -64,13 +81,7 @@ const tasks = {
                 console.log(chalk.yellow(
                     '  Tip: built files are meant to be served over an HTTP server.\n' +
                     '  Opening index.html over file:// won\'t work.\n'
-                ))
-            
-                //↑↑↑上面的都是build.js文件里的内容
-                console.info('开始打包APP，请稍后...');
-                shelljs.cd('./dist');
-                shelljs.exec('cordova run android');
-                shelljs.cd(__dirname);
+                ));
                 done();
             })
         })
@@ -79,8 +90,23 @@ const tasks = {
         runSequence(
             'clean.dist',
             'copy.cordova',
+            'webpack.build',
+            'cordova.run.android'
+        );
+    },
+    'build.android': () => {
+        runSequence(
+            'clean.dist',
+            'copy.cordova',
+            'webpack.build',
+            'cordova.build.android'
+        );
+    },
+    'build.webapp': () => {
+        runSequence(
+            'clean.dist',
             'webpack.build'
-        )
+        );
     }
 };
 
