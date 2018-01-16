@@ -16,15 +16,13 @@ const path = require('path');
 const chalk = require('chalk');
 const webpack = require('webpack');
 const config = require(process.cwd() + '/config');
-
+const webpackConfig = require(process.cwd() + '/build/webpack.prod.conf');
 const minimist = require('minimist');
 const gutil = require('gulp-util');
 const src = process.cwd() + '/src';
 const assets = process.cwd() + '/dist';
 
 const runSequence = require('run-sequence');
-
-const options = require('./options.json');
 
 //命令行参数配置
 const argsOptions = {
@@ -37,29 +35,8 @@ const argsOptions = {
 };
 
 const args = minimist(process.argv.slice(2), argsOptions);
-
 console.info(args);
 
-const target = options.targets[args.t];
-if(!target || !args.t){
-    throw('目标' + args.t + '不存在');
-}
-
-const env = options.targets[args.t].env[args.e];
-if(!env || !args.e){
-    throw('环境' + args.e + '不存在');
-}
-
-let platform = 'android';
-if(args.t == 'mobile'){
-    platform = options.targets[args.t].platforms[args.p];
-    if(!platform){
-        throw('平台' + args.p + '不存在');
-    }
-}
-process.env.target = args.t;
-
-const webpackConfig = require(process.cwd() + '/build/webpack.prod.conf');
 
 const tasks = {
     //默认任务
@@ -70,13 +47,13 @@ const tasks = {
     ]),
     //清空dist文件夹
     'clean.dist': () => {
-        gulp
+        return gulp
             .src(assets)
             .pipe(clean());
     },
     //复制cordova文件夹到dist文件夹
     'copy.cordova': () => {
-        gulp
+        return gulp
             .src('cordova/**/*')
             .pipe(gulp.dest('dist'));
     },
@@ -138,6 +115,22 @@ const tasks = {
             'clean.dist',
             'webpack.build'
         );
+    },
+    'build': () => {
+        if(args.t == 'mobile'){
+            runSequence(
+                'build.android'
+            );
+        }
+        else if(args.t == 'webapp'){
+            runSequence(
+                'build.webapp'
+            );
+        }
+        else {
+            console.info(chalk.red('Target【' + args.t + '】不存在'));
+            process.exit(1);
+        }
     }
 };
 

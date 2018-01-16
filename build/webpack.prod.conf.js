@@ -11,8 +11,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-const isMobile = process.env.target == 'mobile';
-
 const env = require('../config/prod.env');
 
 const webpackConfig = merge(baseWebpackConfig, {
@@ -25,7 +23,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     },
     devtool: config.build.productionSourceMap ? config.build.devtool : false,
     output: {
-        path: isMobile ? config.build.assetsRoot : config.buildWebapp.assetsRoot,
+        path: config.build.assetsRoot,
         filename: utils.assetsPath('js/[name].[chunkhash].js'),
         chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
     },
@@ -63,7 +61,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         // you can customize output by editing /index.html
         // see https://github.com/ampedandwired/html-webpack-plugin
         new HtmlWebpackPlugin({
-            filename: isMobile ? config.build.index : config.buildWebapp.index,
+            filename: config.build.index,
             template: 'index.html',
             inject: true,
             minify: {
