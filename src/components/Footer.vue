@@ -1,5 +1,5 @@
 <template>
-    <tabbar @on-index-change="foo">
+    <tabbar @on-index-change="foo" class="main-footer">
         <tabbar-item selected>
             <img slot="icon" src="../assets/images/homepage.png">
             <img slot="icon-active" src="../assets/images/homepage_fill.png">
@@ -53,6 +53,8 @@
         }
     }
 </script>
-<style>
-    
+<style scoped>
+    .main-footer {
+        position: fixed;
+    }
 </style>

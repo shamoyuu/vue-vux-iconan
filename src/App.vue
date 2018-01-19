@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import AppFooter from './components/Footer.vue'
+    import AppFooter from '@/components/Footer.vue'
     
     export default {
         name: 'app',
@@ -18,4 +18,9 @@
 
 <style lang="less">
     @import "./assets/less/main.less";
+    #app {
+        width: 100%;
+        margin-bottom: 50px;
+        overflow: hidden;
+    }
 </style>
