@@ -1,5 +1,5 @@
 <template>
-    <div class="opus">
+    <div class="opus" @click="goChapter(opus.id)">
         <h4 class="title">{{opus.title}}</h4>
         <div class="summary">{{opus.summary}}</div>
         <div class="opus-imgs">
@@ -10,8 +10,15 @@
     </div>
 </template>
 <script>
+    import router from '@/tool/router/index.js'
+    
     export default {
-        props: ["opus"]
+        props: ["opus"],
+        methods: {
+            goChapter: function (chapterid) {
+                router.push("/chapter/" + chapterid);
+            }
+        }
     }
 </script>
 <style scoped lang="less">
