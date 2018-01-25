@@ -4,7 +4,7 @@ import Home from '@/components/main/Home'
 import News from '@/components/main/News'
 import Classify from '@/components/main/Classify'
 import Personal from '@/components/main/Personal'
-import Chapter from '@/components/Chapter'
+import Opus from '@/components/Opus'
 
 Vue.use(Router);
 
@@ -35,9 +35,9 @@ export default new Router({
             component: Personal
         },
         {
-            path: '/chapter/:chapterid',
-            name: 'chapter',
-            component: Chapter
+            path: '/opus/:opusid',
+            name: 'opus',
+            component: Opus
         }
     ]
 });

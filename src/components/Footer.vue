@@ -24,37 +24,36 @@
 </template>
 
 <script>
-    import {Tabbar, TabbarItem} from 'vux'
-    import router from '@/tool/router/index.js'
-    
-    export default {
-        name: 'AppFooter',
-        components: {
-            Tabbar,
-            TabbarItem
-        },
-        methods: {
-            foo: function (newindex, oldindex) {
-                switch (newindex){
-                    case 0 :
-                        router.replace('/home');
-                        break;
-                    case 1:
-                        router.replace('/news');
-                        break;
-                    case 2:
-                        router.replace('/classify');
-                        break;
-                    case 3:
-                        router.replace('/personal');
-                        break;
-                }
+import { Tabbar, TabbarItem } from "vux";
+
+export default {
+    name: "AppFooter",
+    components: {
+        Tabbar,
+        TabbarItem
+    },
+    methods: {
+        foo: function(newindex, oldindex) {
+            switch (newindex) {
+                case 0:
+                    this.$router.replace("/home");
+                    break;
+                case 1:
+                    this.$router.replace("/news");
+                    break;
+                case 2:
+                    this.$router.replace("/classify");
+                    break;
+                case 3:
+                    this.$router.replace("/personal");
+                    break;
             }
         }
     }
+};
 </script>
 <style scoped>
-    .main-footer {
-        position: fixed;
-    }
+.main-footer {
+    position: fixed;
+}
 </style>

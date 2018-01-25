@@ -10,34 +10,32 @@
     </div>
 </template>
 <script>
-    import router from '@/tool/router/index.js'
-    
-    export default {
-        props: ["opus"],
-        methods: {
-            goChapter: function (chapterid) {
-                router.push("/chapter/" + chapterid);
-            }
+export default {
+    props: ["opus"],
+    methods: {
+        goChapter: function(opusid) {
+            this.$router.push("/opus/" + opusid);
         }
     }
+};
 </script>
 <style scoped lang="less">
-    .opus {
-        padding: 3vw 2.22vw 5vw 2.22vw;
-        border-bottom: 2px solid #efefef;
+.opus {
+    padding: 3vw 2.22vw 5vw 2.22vw;
+    border-bottom: 2px solid #efefef;
+}
+.summary {
+    color: #6a6a6a;
+    font-size: 14px;
+}
+.opus-imgs {
+    display: flex;
+    justify-content: space-between;
+
+    .opus-img {
+        width: 30.93vw;
+        height: 30.93vw;
+        border-radius: 7px;
     }
-    .summary {
-        color: #6a6a6a;
-        font-size: 14px;
-    }
-    .opus-imgs {
-        display: flex;
-        justify-content: space-between;
-        
-        .opus-img {
-            width: 30.93vw;
-            height: 30.93vw;
-            border-radius: 7px;
-        }
-    }
+}
 </style>

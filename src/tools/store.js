@@ -5,7 +5,8 @@ Vue.use(Vuex);
 
 const state = {
     count: 1,
-    author: "静茹♂鱼"
+    author: "静茹♂鱼",
+    ifShowNavBar: true
 };
 
 const mutations = {
@@ -14,6 +15,12 @@ const mutations = {
     },
     reduce(state){
         state.count -= 1;
+    },
+    hideNavBar(state){
+        state.ifShowNavBar = false;
+    },
+    showNavBar(state){
+        state.ifShowNavBar = true;
     }
 };
 
