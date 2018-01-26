@@ -85,7 +85,17 @@ export default {
             this.tabIndex = index;
         }
     },
-    mounted: function() {},
+    mounted: function() {
+        let that = this;
+        this.$api
+            .get("http://meleong.duapp.com/xxx/xxx", {
+                id: ""
+            })
+            .then(function(data) {
+                console.info("成功", arguments);
+            })
+            .catch(this.$errorHandle);
+    },
     components: {
         Tab,
         TabItem,

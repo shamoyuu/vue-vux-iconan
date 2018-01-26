@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue"
+import Vuex from "vuex"
 
 Vue.use(Vuex);
 
@@ -10,22 +10,22 @@ const state = {
 };
 
 const mutations = {
-    add(state){
+    add(state) {
         state.count += 1;
     },
-    reduce(state){
+    reduce(state) {
         state.count -= 1;
     },
-    hideNavBar(state){
+    hideNavBar(state) {
         state.ifShowNavBar = false;
     },
-    showNavBar(state){
+    showNavBar(state) {
         state.ifShowNavBar = true;
     }
 };
 
 const getters = {
-    author (state) {
+    author(state) {
         return "❤❤❤" + state.author + "❤❤❤";
     }
 };

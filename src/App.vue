@@ -10,6 +10,7 @@
 <script>
 import AppFooter from "@/components/Footer.vue";
 import { mapState } from "vuex";
+import Vue from "vue";
 
 export default {
     name: "app",
