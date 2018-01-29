@@ -42,38 +42,8 @@ import HeaderBar from "@/components/common/HeaderBar";
 export default {
     data() {
         return {
-            opus: {
-                name: "名侦探柯南",
-                summary:
-                    "高中生侦探工藤新一，被称为“日本警察的救世主”、“平成年代的福尔摩斯”。一次在与青梅竹马的女友毛利兰...",
-                author: "青山刚昌",
-                type: 0,
-                cover: "http://iconan.bj.bcebos.com/1%2Fcover.jpg",
-                popularity: "100万+",
-                score: 4.5
-            },
-            chapters: [
-                {
-                    id: 1,
-                    name: "第一卷"
-                },
-                {
-                    id: 2,
-                    name: "第二卷"
-                },
-                {
-                    id: 3,
-                    name: "第三卷"
-                },
-                {
-                    id: 4,
-                    name: "第四卷"
-                },
-                {
-                    id: 5,
-                    name: "第五卷"
-                }
-            ],
+            opus: {},
+            chapters: [],
             tabIndex: 0
         };
     },
@@ -87,14 +57,15 @@ export default {
     },
     mounted: function() {
         let that = this;
-        this.$api
-            .get("http://meleong.duapp.com/xxx/xxx", {
-                id: ""
+        that.$api
+            .get("/getopus", {
+                opusid: that.$route.params.opusid
             })
             .then(function(data) {
-                console.info("成功", arguments);
+                that.opus = data.opus;
+                that.chapters = data.chapters;
             })
-            .catch(this.$errorHandle);
+            .catch(that.$errorHandle);
     },
     components: {
         Tab,
