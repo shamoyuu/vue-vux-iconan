@@ -1,12 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="meleong.duapp.com" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>iconan</name>
-    <description>
-        A sample Apache Cordova application that responds to the deviceready event.
-    </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
-    </author>
+<widget id="meleong.duapp.com" version="1.0.0" 
+    xmlns="http://www.w3.org/ns/widgets" 
+    xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>爱柯南</name>
+    <description>爱柯南，看漫画</description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">        Apache Cordova Team    </author>
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <access origin="*" />
@@ -16,12 +14,22 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <preference name="ShowSplashScreenSpinner" value="false"/>
     <platform name="android">
         <allow-intent href="market:*" />
+        <icon density="ldpi" src="res/icon/android/ldpi/ic_launcher.png" />
+        <icon density="mdpi" src="res/icon/android/mdpi/ic_launcher.png" />
+        <icon density="hdpi" src="res/icon/android/hdpi/ic_launcher.png" />
+        <icon density="xhdpi" src="res/icon/android/xhdpi/ic_launcher.png" />
+        <icon density="xxhdpi" src="res/icon/android/xxhdpi/ic_launcher.png" />
+        <!-- 以下是欢迎页面，可根据需要进行添加 -->
+        <splash density="port-hdpi" src="res/screen/android/splash-port-hdpi.png" />
+        <splash density="port-ldpi" src="res/screen/android/splash-port-ldpi.png" />
+        <splash density="port-mdpi" src="res/screen/android/splash-port-mdpi.png" />
+        <splash density="port-xhdpi" src="res/screen/android/splash-port-xhdpi.png" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <engine name="android" spec="~5.2.2" />
 </widget>

@@ -9,6 +9,9 @@
     "installed_plugins": {
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "meleong.duapp.com"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "meleong.duapp.com"
         }
     },
     "dependent_plugins": {}
