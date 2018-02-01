@@ -3,9 +3,9 @@
         <h4 class="title">{{opus.title}}</h4>
         <div class="summary">{{opus.summary}}</div>
         <div class="opus-imgs">
-            <img :src="opus.imgs[0]" class="opus-img">
-            <img :src="opus.imgs[1]" class="opus-img">
-            <img :src="opus.imgs[2]" class="opus-img">
+            <img :src="opus.imgs[0] + '@!h232'" class="opus-img">
+            <img :src="opus.imgs[1] + '@!h232'" class="opus-img">
+            <img :src="opus.imgs[2] + '@!h232'" class="opus-img">
         </div>
     </div>
 </template>

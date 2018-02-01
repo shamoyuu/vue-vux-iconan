@@ -6,7 +6,7 @@
             <img :src="opus.cover" class="opus-body-content-bcg-img">
             <div class="opus-body-content">
                 <img :src="opus.cover" class="opus-body-content-img">
-                <div class="opus-body-content-txt">
+                <div class="opus-body-content-txt" v-show="!!opus.name">
                     <h1 class="opus-name">{{opus.name}}</h1>
                     <div class="opus-author">作者：{{opus.author}}</div>
                     <div>
@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="opus-body-jaw">
-                <button @click="read" class="read-btn" type="button">开始阅读</button>
+                <button @click="read()" class="read-btn" type="button">开始阅读</button>
             </div>
         </div>
         <div class="button-tab-area">
@@ -26,7 +26,7 @@
             </tab>
         </div>
         <div class="chapter-area" v-show="tabIndex == 0">
-            <div class="chapter" v-for="item in chapters" :key="item.id">{{item.name}}</div>
+            <div class="chapter" @click="read(item.id, item.name)" v-for="item in chapters" :key="item.id">{{item.name}}</div>
         </div>
         <div class="summary-area" v-show="tabIndex == 1">
             {{opus.summary}}
@@ -42,14 +42,33 @@ import HeaderBar from "@/components/common/HeaderBar";
 export default {
     data() {
         return {
-            opus: {},
+            opus: {
+                cover: "http://iconan.bj.bcebos.com/r-icon.jpg@!z5"
+            },
             chapters: [],
             tabIndex: 0
         };
     },
     methods: {
-        read: function() {
-            console.info("开始阅读");
+        read: function(chapterid, chapterName) {
+            let that = this;
+            if (chapterid) {
+                this.$router.push({
+                    path: "/picture/" + chapterid,
+                    query: {
+                        opusName: that.opus.name,
+                        chapterName: chapterName
+                    }
+                });
+            } else if (that.chapters.length > 0) {
+                this.$router.push({
+                    path: "/picture/" + that.chapters[0].id,
+                    query: {
+                        opusName: that.opus.name,
+                        chapterName: that.chapters[0].name
+                    }
+                });
+            }
         },
         onItemClick: function(index) {
             this.tabIndex = index;
@@ -82,6 +101,7 @@ export default {
 <style scoped lang="less">
 .opus-view {
     position: relative;
+    margin-bottom: 20px;
 }
 .opus-body {
     position: relative;

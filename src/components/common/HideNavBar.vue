@@ -5,11 +5,11 @@
 <script>
 export default {
     name: "HideNavBar",
-    beforeMount() {
+    mounted() {
         //创建之前
         this.$store.commit("hideNavBar");
     },
-    destroyed() {
+    beforeDestroy() {
         //销毁完成
         this.$store.commit("showNavBar");
     }

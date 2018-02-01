@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="app" :class="{'has-nav-bar':ifShowNavBar}">
         <router-view/>
         <transition name="fade">
             <app-footer v-show="ifShowNavBar"></app-footer>
@@ -19,6 +19,11 @@ export default {
     },
     computed: {
         ...mapState(["ifShowNavBar"])
+    },
+    mounted: function() {
+        if (localStorage.getItem("read-history")) {
+            this.$popup.show();
+        }
     }
 };
 </script>
@@ -27,8 +32,10 @@ export default {
 @import "./assets/less/main.less";
 #app {
     width: 100%;
-    margin-bottom: 50px;
     overflow: hidden;
+}
+.has-nav-bar {
+    margin-bottom: 50px;
 }
 .fade-enter-active,
 .fade-leave-active {

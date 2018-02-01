@@ -23,9 +23,10 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    padding: 12px;
-    width: 100%;
-    z-index: 1;
+    padding: 12px 0;
+    width: 100vw;
+    overflow: hidden;
+    z-index: 9;
 }
 .back-btn {
     display: inline-block;

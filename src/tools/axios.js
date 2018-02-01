@@ -11,8 +11,16 @@ axios.interceptors.request.use((config) => {
 //错误处理
 axios.interceptors.response.use(
     (response) => {
-        const result = response.data;
+        let result = response.data;
         console.info("result===", result);
+
+        if (!result) {
+            result = {
+                stateCode: 3,
+                message: "未获取到数据"
+            }
+        }
+
         //stateCode为0表示正常返回数据，其他情况表示有错误，错误信息由message提供
         switch (result.stateCode) {
             case 0:
@@ -27,7 +35,7 @@ axios.interceptors.response.use(
                 break;
         }
 
-        const err = new Error(result.message);
+        let err = new Error(result.message);
 
         err.data = result;
         err.response = response;
