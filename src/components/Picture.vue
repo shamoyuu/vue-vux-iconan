@@ -8,6 +8,7 @@
             <div class="menu-area" @click="showMenu = true"></div>
             <img class="picture-img" :src="currentPictureUrl">
         </div>
+        <img class="prompt-img" src="@/assets/images/prompt.png" v-if="showPrompt" @click="hidePrompt">
         <div class="page-tip">
             {{currentPictureIndex + 1}} / {{maxPictureIndex}}
         </div>
@@ -39,7 +40,8 @@ export default {
             },
             currentDefinition:
                 localStorage.getItem("picture-definition") || "@!z3",
-            opusName: ""
+            opusName: "",
+            showPrompt: localStorage.getItem("has-show-prompt") != "yes"
         };
     },
     methods: {
@@ -101,6 +103,10 @@ export default {
             };
             console.info(readHistory);
             localStorage.setItem("read-history", JSON.stringify(readHistory));
+        },
+        hidePrompt: function() {
+            this.showPrompt = false;
+            localStorage.setItem("has-show-prompt", "yes");
         }
     },
     mounted: function() {
@@ -169,7 +175,6 @@ export default {
     left: 30vw;
     width: 40vw;
     height: 30vh;
-    background: rgba(255, 2, 0, 0.3);
     z-index: 4;
 }
 .page-tip {
@@ -180,5 +185,13 @@ export default {
     color: #fff;
     text-shadow: 0 0 10px #000;
     z-index: 5;
+}
+.prompt-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9;
 }
 </style>

@@ -2,7 +2,7 @@
     <transition name="fade">
         <div class="popup-area" v-show="show">
             <div class="close-btn" type="button" @click="show = false">×</div>
-            <span @click="foo">继续看{{popusInfo.opusName}}{{popusInfo.chapterName}}</span>
+            <span @click="foo">继续看{{popusInfo.opusName | substr(8)}}{{popusInfo.chapterName | substr(8)}}</span>
         </div>
     </transition>
 </template>

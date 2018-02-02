@@ -5,6 +5,7 @@ import router from "./tools/router"
 import store from "./tools/store"
 import api from "./tools/api"
 import errorHandle from "./tools/errorHandle"
+import filters from "./tools/filters"
 
 import { ToastPlugin } from "vux"
 
@@ -18,10 +19,11 @@ Vue.config.productionTip = false;
 const FastClick = require("fastclick");
 FastClick.attach(document.body);
 
-Vue.use(ToastPlugin, { type: "text", position: "bottom", width: "70vw" });
+Vue.use(ToastPlugin, { type: "text", position: "bottom", width: "80vw", time: 3000 });
 Vue.use(TestDirective);
 Vue.use(api);
 Vue.use(errorHandle);
+Vue.use(filters);
 Vue.use(Popup);
 
 Vue.prototype.instance = new Vue({

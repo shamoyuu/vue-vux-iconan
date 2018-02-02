@@ -1,6 +1,7 @@
 import axios from "@/tools/axios"
 
-let apiUrl = "http://localhost:18080/iconan";
+//let apiUrl = "http://localhost:18080/iconan";
+let apiUrl = "http://meleong.duapp.com/iconan";
 
 export default {
     install(Vue) {

@@ -101,7 +101,6 @@ export default {
 <style scoped lang="less">
 .opus-view {
     position: relative;
-    margin-bottom: 20px;
 }
 .opus-body {
     position: relative;
@@ -160,6 +159,7 @@ export default {
 
 .chapter-area {
     position: relative;
+    padding-bottom: 20px;
     justify-content: space-between;
     flex-flow: row wrap;
     background: #fff;

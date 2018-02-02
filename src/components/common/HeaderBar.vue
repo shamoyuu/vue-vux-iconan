@@ -31,6 +31,7 @@ export default {
 .back-btn {
     display: inline-block;
     position: relative;
+    margin-left: 10px;
     width: 30px;
     height: 30px;
     background: url("../../assets/images/return.png") 0 0 no-repeat;
