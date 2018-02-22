@@ -18,3 +18,8 @@ gulp build -t webapp
 # 打包安卓apk
 gulp build -t mobile
 ```
+
+# 在线预览地址
+http://meleong.duapp.com/iconan/index.html
+  
+![iconan在线预览二维码](https://github.com/shamoyuu/picture/blob/master/iconan.jpg)
