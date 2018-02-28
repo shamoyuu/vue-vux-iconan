@@ -1,23 +1,23 @@
 <template>
-    <tabbar @on-index-change="foo" class="main-footer">
-        <tabbar-item selected>
-            <img slot="icon" src="../assets/images/homepage.png">
-            <img slot="icon-active" src="../assets/images/homepage_fill.png">
+    <tabbar @on-index-change="indexChange" class="main-footer">
+        <tabbar-item :selected="selected[0]">
+            <img slot="icon" src="@/assets/image/homepage.png">
+            <img slot="icon-active" src="@/assets/image/homepage_fill.png">
             <span slot="label">首页</span>
         </tabbar-item>
-        <tabbar-item>
-            <img slot="icon" src="../assets/images/flashlight.png">
-            <img slot="icon-active" src="../assets/images/flashlight_fill.png">
+        <tabbar-item :selected="selected[1]">
+            <img slot="icon" src="@/assets/image/flashlight.png">
+            <img slot="icon-active" src="@/assets/image/flashlight_fill.png">
             <span slot="label">最新</span>
         </tabbar-item>
-        <tabbar-item>
-            <img slot="icon" src="../assets/images/createtask.png">
-            <img slot="icon-active" src="../assets/images/createtask_fill.png">
+        <tabbar-item :selected="selected[2]">
+            <img slot="icon" src="@/assets/image/createtask.png">
+            <img slot="icon-active" src="@/assets/image/createtask_fill.png">
             <span slot="label">分类</span>
         </tabbar-item>
-        <tabbar-item>
-            <img slot="icon" src="../assets/images/people.png">
-            <img slot="icon-active" src="../assets/images/people_fill.png">
+        <tabbar-item :selected="selected[3]">
+            <img slot="icon" src="@/assets/image/people.png">
+            <img slot="icon-active" src="@/assets/image/people_fill.png">
             <span slot="label">我的</span>
         </tabbar-item>
     </tabbar>
@@ -26,28 +26,40 @@
 <script>
 import { Tabbar, TabbarItem } from "vux";
 
+let navs = ["home", "news", "classify", "personal"];
+
 export default {
     name: "AppFooter",
+    data: function () {
+        return {
+            selected: [true, false, false, false]
+        };
+    },
     components: {
         Tabbar,
         TabbarItem
     },
     methods: {
-        foo: function(newindex, oldindex) {
-            switch (newindex) {
-                case 0:
-                    this.$router.replace("/home");
-                    break;
-                case 1:
-                    this.$router.replace("/news");
-                    break;
-                case 2:
-                    this.$router.replace("/classify");
-                    break;
-                case 3:
-                    this.$router.replace("/personal");
-                    break;
+        indexChange: function (newindex, oldindex) {
+            //oldindex是undefined表示刷新页面
+            if (oldindex !== undefined) {
+                this.$router.replace({
+                    name: navs[newindex]
+                });
             }
+        }
+    },
+    created: function () {
+        let that = this;
+
+        changeSelected(that.$router.currentRoute.name);
+        that.$router.afterEach(function (to, from) {
+            changeSelected(to.name);
+        });
+
+        function changeSelected(currentRouterName) {
+            that.selected = [false, false, false, false];
+            that.selected[navs.indexOf(currentRouterName)] = true;
         }
     }
 };

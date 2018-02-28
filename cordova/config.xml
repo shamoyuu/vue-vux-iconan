@@ -2,7 +2,7 @@
 <widget id="meleong.duapp.com" version="1.0.0" 
     xmlns="http://www.w3.org/ns/widgets" 
     xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>爱柯南</name>
+    <name>看漫画</name>
     <description>爱柯南，看漫画</description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">        Apache Cordova Team    </author>
     <content src="index.html" />
@@ -19,6 +19,7 @@
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="FadeSplashScreen" value="false" />
     <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="SplashShowOnlyFirstTime" value="false" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="res/icon/android/ldpi/ic_launcher.png" />

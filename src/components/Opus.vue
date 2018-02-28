@@ -40,6 +40,7 @@ import HideNavBar from "@/components/common/HideNavBar";
 import HeaderBar from "@/components/common/HeaderBar";
 
 export default {
+    name: "Opus",
     data() {
         return {
             opus: {
@@ -50,37 +51,29 @@ export default {
         };
     },
     methods: {
-        read: function(chapterid, chapterName) {
+        read: function (chapterid, chapterName) {
             let that = this;
             if (chapterid) {
                 this.$router.push({
-                    path: "/picture/" + chapterid,
-                    query: {
-                        opusName: that.opus.name,
-                        chapterName: chapterName
-                    }
+                    path: "/picture/" + chapterid
                 });
             } else if (that.chapters.length > 0) {
                 this.$router.push({
-                    path: "/picture/" + that.chapters[0].id,
-                    query: {
-                        opusName: that.opus.name,
-                        chapterName: that.chapters[0].name
-                    }
+                    path: "/picture/" + that.chapters[0].id
                 });
             }
         },
-        onItemClick: function(index) {
+        onItemClick: function (index) {
             this.tabIndex = index;
         }
     },
-    mounted: function() {
+    mounted: function () {
         let that = this;
         that.$api
             .get("/getopus", {
                 opusid: that.$route.params.opusid
             })
-            .then(function(data) {
+            .then(function (data) {
                 that.opus = data.opus;
                 that.chapters = data.chapters;
             })
@@ -138,7 +131,7 @@ export default {
     bottom: 0;
     width: 100%;
     height: 16vw;
-    background: url("../assets/images/opus-main-top.png") 0 0 no-repeat;
+    background: url("../assets/image/opus-main-top.png") 0 0 no-repeat;
     background-size: 100%;
     text-align: center;
 }

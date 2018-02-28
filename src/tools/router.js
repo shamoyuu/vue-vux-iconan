@@ -1,5 +1,7 @@
 import Vue from "vue"
 import Router from "vue-router"
+import store from "@/tools/store"
+import util from "@/tools/util"
 import Home from "@/components/main/Home"
 import News from "@/components/main/News"
 import Classify from "@/components/main/Classify"
@@ -9,7 +11,7 @@ import Picture from "@/components/Picture"
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
     routes: [
         {
             path: "/",
@@ -47,3 +49,5 @@ export default new Router({
         }
     ]
 });
+
+export default router;

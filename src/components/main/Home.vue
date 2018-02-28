@@ -10,6 +10,7 @@ import { Swiper, SwiperItem } from "vux";
 import Recommend from "@/components/main/home/Recommend";
 
 export default {
+    name: "Home",
     data() {
         return {
             swiperList: [],
@@ -17,7 +18,7 @@ export default {
         };
     },
     methods: {
-        goto: function(type, id) {
+        goto: function (type, id) {
             console.info(arguments);
         }
     },
@@ -26,15 +27,19 @@ export default {
         SwiperItem,
         Recommend
     },
-    mounted: function() {
+    mounted: function () {
         let that = this;
         that.$api
             .get("/home")
-            .then(function(data) {
+            .then(function (data) {
                 that.swiperList = data.swiperList;
                 that.opuses = data.opuses;
             })
             .catch(that.$errorHandle);
+
+        if (localStorage.getItem("read-history")) {
+            that.$popup.show();
+        }
     }
 };
 </script>

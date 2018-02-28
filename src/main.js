@@ -10,6 +10,7 @@ import filters from "./tools/filters"
 import { ToastPlugin } from "vux"
 
 import TestDirective from "./directives/common/TestDirective"
+import PictureAnimateDirective from "./directives/common/PictureAnimateDirective"
 import Popup from "./plugins/Popup";
 
 
@@ -21,6 +22,7 @@ FastClick.attach(document.body);
 
 Vue.use(ToastPlugin, { type: "text", position: "bottom", width: "80vw", time: 3000 });
 Vue.use(TestDirective);
+Vue.use(PictureAnimateDirective);
 Vue.use(api);
 Vue.use(errorHandle);
 Vue.use(filters);

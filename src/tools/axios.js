@@ -12,7 +12,6 @@ axios.interceptors.request.use((config) => {
 axios.interceptors.response.use(
     (response) => {
         let result = response.data;
-        console.info("result===", result);
 
         if (!result) {
             result = {
@@ -44,35 +43,11 @@ axios.interceptors.response.use(
     },
     (err) => {
         if (err && err.response) {
-            switch (err.response.status) {
-                case 400:
-                    err.message = "请求错误";
-                    break
-                case 404:
-                    err.message = "请求地址不存在";
-                    break
-                case 408:
-                    err.message = "网络异常，请稍后重试[408]";
-                    break
-                case 500:
-                    err.message = "网络异常，请稍后重试[500]";
-                    break
-                case 501:
-                    err.message = "网络异常，请稍后重试[501]";
-                    break
-                case 502:
-                    err.message = "网络异常，请稍后重试[502]";
-                    break
-                case 503:
-                    err.message = "网络异常，请稍后重试[503]";
-                    break
-                case 504:
-                    err.message = "网络异常，请稍后重试[504]";
-                    break
-                case 505:
-                    err.message = "网络异常，请稍后重试[505]";
-                    break
-                default:
+            if (err.response.status == 404) {
+                err.message = "请求地址不存在";
+            }
+            else {
+                err.message = "网络异常，请稍后重试[" + err.response.status + "]";
             }
         }
         else {

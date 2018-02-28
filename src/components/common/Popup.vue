@@ -20,20 +20,15 @@ export default {
         };
     },
     methods: {
-        foo: function() {
+        foo: function () {
             let that = this;
             that.show = false;
             router.push({
-                path: "/picture/" + that.popusInfo.chapterid,
-                query: {
-                    opusName: that.popusInfo.opusName,
-                    chapterName: that.popusInfo.chapterName,
-                    pictureIndex: that.popusInfo.pictureIndex
-                }
+                path: "/picture/" + that.popusInfo.chapterid
             });
         }
     },
-    mounted: function() {
+    mounted: function () {
         //localStorage.removeItem("read-history");
     }
 };

@@ -26,6 +26,7 @@ export default {
     padding: 12px 0;
     width: 100vw;
     overflow: hidden;
+    pointer-events: none;
     z-index: 9;
 }
 .back-btn {
@@ -34,7 +35,8 @@ export default {
     margin-left: 10px;
     width: 30px;
     height: 30px;
-    background: url("../../assets/images/return.png") 0 0 no-repeat;
+    background: url("../../assets/image/return.png") 0 0 no-repeat;
     background-size: 30px;
+    pointer-events: all;
 }
 </style>
