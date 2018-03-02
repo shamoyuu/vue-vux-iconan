@@ -1,7 +1,10 @@
 import axios from "@/tools/axios"
 
-//let apiUrl = "http://localhost:18080/iconan";
-let apiUrl = "http://meleong.duapp.com/iconan";
+let apiUrl = "<<<service>>>";
+let picServer = "<<<pic-service>>>";
+
+console.info("apiUrl", apiUrl);
+console.info("picServer", picServer);
 
 export default {
     install(Vue) {

@@ -10,8 +10,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const OptimizeCSSPlugin = require("optimize-css-assets-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const ServersReplaceWebpackPlugin = require("./plugin/servers-replace-webpack-plugin");
 
 const env = require("../config/prod.env");
+const SERVERS = global.SERVERS;
 
 const webpackConfig = merge(baseWebpackConfig, {
     module: {
@@ -115,7 +117,8 @@ const webpackConfig = merge(baseWebpackConfig, {
                 to: config.build.assetsSubDirectory,
                 ignore: [".*"]
             }
-        ])
+        ]),
+        new ServersReplaceWebpackPlugin(SERVERS)
     ]
 });
 

@@ -1,0 +1,34 @@
+{
+    "webapp": {
+        "environments": {
+            "dev": {
+                "service": "http://localhost:18080/iconan",
+                "pic-service": "http://iconan.bj.bcebos.com"
+            },
+            "test": {
+                "service": "http://meleong.duapp.com/iconan",
+                "pic-service": "http://iconan.bj.bcebos.com"
+            },
+            "production": {
+                "service": "/iconan",
+                "pic-service": "http://iconan.bj.bcebos.com"
+            }
+        }
+    },
+    "mobile": {
+        "environments": {
+            "dev": {
+                "service": "http://localhost:18080/iconan",
+                "pic-service": "http://iconan.bj.bcebos.com"
+            },
+            "test": {
+                "service": "http://meleong.duapp.com/iconan",
+                "pic-service": "http://iconan.bj.bcebos.com"
+            },
+            "production": {
+                "service": "http://meleong.duapp.com/iconan",
+                "pic-service": "http://iconan.bj.bcebos.com"
+            }
+        }
+    }
+}
